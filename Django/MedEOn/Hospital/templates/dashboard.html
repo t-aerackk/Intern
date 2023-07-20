@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block me%}
+{% load static%}
+
+ <h1> hello</h1>
+ {% for i in patient_ac %}
+    <p>{{i.address}} {{i.email}} {{i.message}}</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+        <p>Welcome, {{ user.username }}!</p>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <p>You are not logged in. <a href="{% url 'login' %}">Login here</p>
+    {% endif %}
+
+
+{% endblock%}

@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block title %}form{% endblock %}
+
+{% block me%}
+{% load static%}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            background-color: orange;
+        }
+        h3{
+            text-align: center;
+            background-color: aquamarine;
+            
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        select,
+        input[type="datetime-local"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Appointment Form</h1>
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="appointment_type">Appointment Type:</label>
+            <input type="text" id="appointment_type" name="appointment_type" required list="appointment_types">
+            <datalist id="appointment_types">
+            <option value="General Consultation">
+            <option value="Specialist Consultation">
+            <option value="Diagnostic Tests">
+            <option value="Follow-up Appointments">
+            <option value="Preoperative Assessment">
+            <option value="Postoperative Follow-up">
+            <option value="Emergency Room (ER) Visits">
+            <option value="Vaccination Appointments">
+            <option value="Physical Therapy and Rehabilitation">
+            <option value="Prenatal Care">
+            <option value="Mental Health Appointments">
+            <option value="Chronic Disease Management">
+            <option value="Wellness Programs">
+            </datalist>
+
+
+            <label for="preferred_location">Preferred Location:</label>
+            <input type="text" id="preferred_location" name="preferred_location" required>
+
+            <label for="department">Department:</label>
+            <input type="text" id="department" name="department" required>
+
+            <label for="signs_symptoms">Signs and Symptoms (if any):</label>
+            <textarea id="signs_symptoms" name="signs_symptoms" rows="4"></textarea>
+
+            <label for="preferred_doctor">Preferred Doctor (if any):</label>
+            <input type="text" id="preferred_doctor" name="preferred_doctor">
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            {{form.as_p}}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="display" >
+        <h3>List of Appointments</h3>
+            <ul>
+            {% for i in patient_ac %}
+                <li>{{ i.address }} - {{ i.date }} {{ i.time }}</li>
+            {% endfor %}
+            </ul>
+    </div>
+
+</body>
+{% endblock %}

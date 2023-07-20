@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+SITE_ID=2
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Hospital'
+    'Hospital',
+    'django.contrib.sites',
+
 ]
 
 MIDDLEWARE = [
@@ -107,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE ='Asia/Kathmandu'
 
 USE_I18N = True
 

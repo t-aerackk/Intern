@@ -1,0 +1,21 @@
+.image-with-text {
+    position: relative;
+}
+
+.image-with-text img {
+    display: block;
+}
+
+.image-with-text .text-overlay {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 253, 253);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+
+    /* color: rgb(255, 253, 253);
+    background-color: orangered; */
+
+}

@@ -9,3 +9,20 @@ class Patient(models.Model):
     address=models.CharField(max_length=50)
     message=models.TextField()
     
+    def __str__(self):
+        return self.address
+    
+
+class Appointment(models.Model):
+    appointment_type = models.CharField(max_length=100)
+    preferred_location = models.CharField(max_length=100)
+    department = models.CharField(max_length=100)
+    signs_symptoms = models.TextField(blank=True)
+    preferred_doctor = models.CharField(max_length=100, blank=True)
+    date = models.DateField()
+    time = models.TimeField()
+
+    def __str__(self):
+        return f"{self.appointment_type} - {self.date} {self.time}"
+
+    

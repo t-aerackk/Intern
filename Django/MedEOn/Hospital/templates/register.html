@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Register Me{% endblock %}
+
+{% block me%}
+{% load static%}
+
+  
+  <div style="max-width: 400px; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+    <h2 style="text-align: center; margin-bottom: 20px;">Login</h2>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %} 
+        <label for="username" style="dis.play: block; margin-bottom: 5px;">Username</label>
+        <input type="text" id="uname"  name="uname" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;"  required>
+      
+        <label for="Password" style="display: block; margin-bottom: 5px;">Password</label>
+        <input type="password"  id="Password" name="Password" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;" required>
+
+        <div style="text-align: center;">
+            <button type="submit" style="background-color: #007bff; color: #fff; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Login</button>
+        </div>
+    </form>
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="{% url 'about' %}">Register Now</a> | <a href="{% url 'appoint' %}">Forgot Password</a> | <a href="{% url 'about' %}">Login with Google</a>
+  </div>
+  
+</div>
+
+
+{% endblock%}
